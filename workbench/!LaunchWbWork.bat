@@ -1,0 +1,1 @@
+"D:\AnsysEM\ANSYS2019R2\ANSYS Inc\v194\Framework\bin\Win64\runwb2.exe" -X -R "C:\Users\Fastec\Desktop\Matlab_NSGAII_WB_25.09.2019\workbench\RunScriptCh.wbjn"

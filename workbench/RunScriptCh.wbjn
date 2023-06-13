@@ -1,0 +1,21 @@
+﻿# encoding: utf-8
+# 2019 R2
+# Launch Ex_Baksan
+import os
+path_to_current_file = os.path.realpath(__file__)
+path_to_current_folder = os.path.dirname(path_to_current_file)
+path_to_ex_file = os.path.realpath(os.path.join(path_to_current_folder, "EX_Baksan.vbs"))
+path_to_ex_file = '%s"' % path_to_ex_file
+SetScriptVersion(Version="19.4.159")
+template1 = GetTemplate(TemplateName="Maxwell2D Design")
+system1 = template1.CreateSystem()
+Ansoft.EditSystem(System=system1)
+string1 = Ansoft.ExecuteGenericDesktopCommand(
+    System=system1,
+    CommandClass="WB_ACTIVATE_GIVEN_SYSTEMID",
+    Argument="Maxwell",
+    ExecuteOnlyIfSystemIsAlreadyOpenInDesktop=True)
+#system1.SendAnsoftCommand(PyCommand="""oDesktop.RunScript(""path_to_ex_file"")""")
+system1.SendAnsoftCommand(PyCommand="""oDesktop.RunScript(
+"C:\Users\Fastec\Desktop\Matlab_NSGAII_WB_25.09.2019\workbench\EX_Baksan.vbs"
+	)""")

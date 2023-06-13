@@ -1,0 +1,22 @@
+﻿# encoding: utf-8
+# 2019 R2
+SetScriptVersion(Version="19.4.159")
+template1 = GetTemplate(TemplateName="Maxwell2D Design")
+system1 = template1.CreateSystem()
+Ansoft.EditSystem(System=system1)
+string1 = Ansoft.ExecuteGenericDesktopCommand(
+    System=system1,
+    CommandClass="WB_ACTIVATE_GIVEN_SYSTEMID",
+    Argument="Maxwell",
+    ExecuteOnlyIfSystemIsAlreadyOpenInDesktop=True)
+#system1.SendAnsoftCommand(PyCommand="""oDesktop.SetActiveProject(\"MaxwellProject\").RunScript(
+#	[
+#		\"SourceFile:=\"		, \"D:\\\PhD.Calculation\Workbench_NSGAII_13.09.2019\EX_Baksan.vbs\"
+#	])""")
+	
+#	icempath = "D:\PhD.Calculation\Workbench_NSGAII_13.09.2019\EX_Baksan.vbs"
+#script = open (icempath, "r")
+#array = [ ]
+#for line in script :
+#	array.append (line)
+#script.close ( )
