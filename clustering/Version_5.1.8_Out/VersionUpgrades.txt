@@ -1,0 +1,8 @@
+5.1.4 First Version
+5.1.5  Lambertw2 function added. Now, can be made to EXE.
+         Legend of CCR curves added
+
+5.1.6 Supports up to 7 classes
+        
+5.1.8 Help menu added
+        Settings menu added

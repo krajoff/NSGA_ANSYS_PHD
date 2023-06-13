@@ -1,0 +1,36 @@
+﻿# encoding: utf-8
+# 2019 R2
+SetScriptVersion(Version="19.4.159")
+RunScript(FilePath="D:/PhD.Calculation/Workbench_NSGAII_13.09.2019/new.wbjn")
+system1 = GetSystem(Name="Maxwell")
+string1 = Ansoft.ExecuteGenericDesktopCommand(
+    System=system1,
+    CommandClass="WB_ACTIVATE_GIVEN_SYSTEMID",
+    Argument="Maxwell",
+    ExecuteOnlyIfSystemIsAlreadyOpenInDesktop=True)
+system1.CloseAnsoftApplication()
+Ansoft.EditSystem(System=system1)
+string2 = Ansoft.ExecuteGenericDesktopCommand(
+    System=system1,
+    CommandClass="WB_ACTIVATE_GIVEN_SYSTEMID",
+    Argument="Maxwell",
+    ExecuteOnlyIfSystemIsAlreadyOpenInDesktop=True)
+system1.SendAnsoftCommand(PyCommand="""oDesktop.SetActiveProject(\"MaxwellProject\").SetActiveDesign(\"Maxwell2DDesign1\").SetActiveEditor(\"3D Modeler\").Import(
+	[
+		\"NAME:NativeBodyParameters\",
+		\"HealOption:=\"		, 0,
+		\"Options:=\"		, \"-1\",
+		\"FileType:=\"		, \"UnRecognized\",
+		\"MaxStitchTol:=\"	, -1,
+		\"ImportFreeSurfaces:=\"	, False,
+		\"GroupByAssembly:=\"	, False,
+		\"CreateGroup:=\"		, True,
+		\"STLFileUnit:=\"		, \"Auto\",
+		\"MergeFacesAngle:=\"	, 0.02,
+		\"HealSTL:=\"		, False,
+		\"PointCoincidenceTol:=\"	, 1E-06,
+		\"CreateLightweightPart:=\", False,
+		\"ImportMaterialNames:=\"	, False,
+		\"SeparateDisjointLumps:=\", False,
+		\"SourceFile:=\"		, \"D:\\\\9.x_t\"
+	])""")
