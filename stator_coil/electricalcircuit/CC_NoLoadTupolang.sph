@@ -1,0 +1,42 @@
+* 0;New.ckt
+* Project: D:/NSGA_ANSYS_PHD/stator_coil/electricalcircuit/NoLoadRun1s_Sayny_2.aedt
+* Design: New
+
+*BeginParamDef
+.PARAM $ActiveResistanceStator=0.00100290643255452
+.PARAM $ActiveResistanceRotor=0.0422599811983857
+.PARAM $TestTime=10
+.PARAM $NoLoadTime=1
+.PARAM $VoltageRotor=30.8
+*EndParamDef
+
+
+*begin toplevel circuit
+LWindingStatorAX 0 net_246 1 Winding
+W_261 net_253 net_256 VAmmeter251 M1 OFF
+VAmmeter151 net_246 net_250 DC 0 
+.PRINT TRAN PROBE VAmmeter151(t) I(VAmmeter151)
+IVoltmeter191 0 net_170 DC 0 
+.PRINT TRAN PROBE IVoltmeter191(t) V(IVoltmeter191)
+R179 net_251 net_254 '$ActiveResistanceStator'
+LWindingStatorCZ 0 net_170 1 Winding
+VAmmeter188 net_170 net_252 DC 0 
+.PRINT TRAN PROBE VAmmeter188(t) I(VAmmeter188)
+IVoltmeter172 0 net_246 DC 0 
+.PRINT TRAN PROBE IVoltmeter172(t) V(IVoltmeter172)
+W_264 net_254 net_256 VAmmeter251 M1 OFF
+LWindingStatorBY 0 net_164 1 Winding
+R185 net_252 net_255 '$ActiveResistanceStator'
+VAmmeter154 net_164 net_251 DC 0 
+.PRINT TRAN PROBE VAmmeter154(t) I(VAmmeter154)
+IVoltmeter176 0 net_164 DC 0 
+.PRINT TRAN PROBE IVoltmeter176(t) V(IVoltmeter176)
+R178 net_250 net_253 '$ActiveResistanceStator'
+VAmmeter251 0 net_235 DC 0 
+.PRINT TRAN PROBE VAmmeter251(t) I(VAmmeter251)
+W_265 net_255 net_256 VAmmeter251 M1 OFF
+I275 net_235 0 PULSE (0 2 0.02 0 0 0.1 '0.1 + 1') 
+.MODEL M1 CSW (Ron=1e-06 Roff=1000000000 Ion=1 Ioff=0)
+
+*end toplevel circuit
+.end

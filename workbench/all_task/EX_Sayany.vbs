@@ -19,9 +19,10 @@ Dim GenLength
   Station = "HHP Sayany"
 ' ---------------------------------------------
 PiConst = 4*atn(1)
-MainFolder = "E:\PhD.Calculation\Matlab_NSGAII_Ratio_07.07.2018\maxwell\"
+MainFolder = "C:\Matlab_NSGAII_parallel_20.08.2018\maxwell\"
 ExternalCircuit = "CC_NoLoadSayany.sph"
 IncTitle = "" ' "example" & IncTitle & ".csv"
+Solver = 1 ' If 0 then Maxwell else ANSYS R19.1
 ' ---------------------------------------------
 ' Stator geometry
 ' ---------------------------------------------
@@ -32,13 +33,13 @@ LenghtTurn = 9290 ' One stator winding turn length [mm]
 Z1 = 504 ' Numbers of slots [-]
 Bs1 = 40 ' Slot wedge maximum width [mm]
 Bs2 = 30.2 ' Slot body width [mm]
-Hs0 = 179.2 ' Slot opening height [mm]
 Hs1 = 15.0 ' Slot wedge height [mm]
 Hs2 = 1.0 ' Slot closed bridge height [mm]
-Hsw = 74.6 ' Stator winding height [mm]
-Bsw = 16.9 ' Stator winding width [mm]
+Bsw = Bs2 - 13.3 ' Stator winding width [mm]
+Hsw = 74.6*16.9/Bsw' Stator winding height [mm]
 Hsw_gap = 6.3 ' Distance between stator winding and slot bottom [mm]
 Hsw_between = 14.6 ' Distance between stator windings [mm]
+Hs0 = 2*Hsw+Hsw_between+Hsw_gap+9.1 ' Slot opening height [mm]
 Alphas1 = PiConst/3 ' Angle base of wedge  [rad]
 AirGap = 30 ' Air gap [mm]
 Ns = 43 ' Air duct number of stator core [-]
@@ -53,8 +54,6 @@ ExValue = Array(1520, 1103200) ' 0.Rotor current [A], 1.losses [W]
 TypeCore = 0 ' 0 is without joins, 1 is with joins
 StYLoss = Array(221,  Round(2.99*0.5^2, 2),  .27) ' B50/1.0=1.1[W/kg] losses ratio for d Yoke
 StTLoss = Array(273,  Round(2.99*0.5^2, 2), .27) ' B50/1.0=1.36[W/kg] losses ratio for q Tooth
-'StYLoss(2) = Round(( ( 1.0*(1.20*(1-TypeCore) + 1.40*(TypeCore)) ) * 7800-50*StYLoss(0)-50^2*StYLoss(1))/(50^1.5), 2) ' 1.2 and 1.4 [W/kg] is empirical value
-'StTLoss(2) = Round(( ( 1.0*(1.40*(1-TypeCore) + 1.65*(TypeCore)) ) * 7800-50*StTLoss(0)-50^2*StTLoss(1))/(50^1.5), 2)
 ' ---------------------------------------------
 ' Rotor geometry
 ' ---------------------------------------------
@@ -74,10 +73,10 @@ SlotPole = 10 ' Numbers of damper slots per pole [-]
 SlotPoleOpen = 8 ' Numbers of damper slots per pole with opening width [-]
 Bso = 5 ' Slot opening width [mm]
 RadiusInRimRotor = 4820 ' Inner radius of rotor rim [mm]
-Brw = 105 ' Rotor winding width [mm]
-Hrw = 205 ' Rotor winding height [mm]
 Srw = (538-490)/2 ' Distance between rotor winding and pole body [mm]
 Srh = 22 ' Distance between rotor winding and shoe bottom [mm]
+Hrw = PoleHeight - Srh - 28 ' Rotor winding height [mm]
+Brw = 205*105/Hrw ' Rotor winding width [mm]
 Tsheet = 1.5 ' Sheet thickness [mm]
 RotLoss = Array(4500, Round(2.99*Tsheet^2, 2), 0)
 ' ---------------------------------------------
@@ -85,7 +84,7 @@ RotLoss = Array(4500, Round(2.99*Tsheet^2, 2), 0)
 ' ---------------------------------------------
 CoilRotor = 1 ' Rotor winding for drawing[-]
 CoilRotorPr = 20 ' Rotor winding for winding parameters[-]
-CalArea = 2 ' Rotor poles for calculation [-]
+CalArea = 1 ' Rotor poles for calculation [-]
 AngleD = Z1/Poles/2-.5 ' Rotation angle of stator slot is in a counter-clockwise direction. Share of 2*pi()/Z1. 
 ' If AngleD mod 2 is 0 then D-axis slot, .5 is tooth. The value is about Z1/2/Poles [-]
 NNull = 0 ' Stator winding is in a clockwise direction [-]
@@ -102,8 +101,6 @@ RotLoss = Array(4500, Round(2.99*Tsheet^2, 2), 0)
 ' ---------------------------------------------
 WindingTop =    Array ("b", "x", "x", "x", "x", "c", "c", "c", "c", "y", "y", "y") ' small
 WindingBottom = Array ("b", "b", "b", "x", "x", "x", "x", "c", "c", "c", "c", "y") ' small
-'WindingTop =    Array ("b", "x", "x", "x", "x", "c", "c", "c", "c", "y", "y", "y", "y", "a", "a", "a", "a", "z", "z", "z", "z", "b", "b", "b") 
-'WindingBottom = Array ("b", "b", "b", "x", "x", "x", "x", "c", "c", "c", "c", "y", "y", "y", "y", "a", "a", "a", "a", "z", "z", "z", "z", "b")
 ' ---------------------------------------------
 ' Mesh settings
 ' ---------------------------------------------
@@ -126,5 +123,5 @@ End Sub
 
 Include("MW_MainPart")
 Include("MW_FieldReport")
-'Include("MW_DamperSolid")
+Include("MW_DamperSolid")
 Include("MW_SolvedValues")

@@ -19,7 +19,7 @@ Dim GenLength
   Station = "HHP Baksan"
 ' ---------------------------------------------
 PiConst = 4*atn(1)
-MainFolder = "C:\Matlab_NSGAII_ES_26.09.2019\workbench\"
+MainFolder = "D:\NSGA_ANSYS_PHD\workbench\"
 ExternalCircuit = "CC_NoLoadBaksan.sph"
 IncTitle = "" ' "example" & IncTitle & ".csv"
 Solver = 1 ' If 0 then Maxwell else ANSYS R19.1
