@@ -1,6 +1,5 @@
-# Multi-objective optimization of hydro-generator design model, formation of cluster structures, correlation and regression analysis based on obtained data. 
+# Multi-objective optimization by NSGA-II of hydro-generator FEM model. Clustering generations, correlation and regression analysis. 
 
-## Paths
 
 | Folders         | Description                                                                                                                                   |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -13,3 +12,8 @@
 | maxwell         | the same, but for Maxwell                                                                                                                     |
 | supercluster    | the same, but for VMware Horizon Client and Putty                                                                                             |
 | stator_coil     | investigation damper effect                                                                                                                   |
+
+
+| First generation                                                                                                                 | The last generation                                                                                                                     |
+|----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| fro<img src="https://github.com/krajoff/NSGA_ANSYS_PHD/blob/main/pictures/G1.Baksan.750p.png?raw=true" width="246" height="204"> | fro<img src="https://github.com/krajoff/NSGA_ANSYS_PHD/blob/main/pictures/G39.Baksan.750p.Paper.png?raw=true" width="246" height="204"> |
