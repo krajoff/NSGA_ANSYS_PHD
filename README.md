@@ -13,7 +13,8 @@
 | supercluster    | the same, but for VMware Horizon Client and Putty                                                                                             |
 | stator_coil     | investigation damper effect                                                                                                                   |
 
+<br>First generation  
+<img src="https://github.com/krajoff/NSGA_ANSYS_PHD/blob/main/pictures/G1.Baksan.750p.png?raw=true" width="246" height="204">
 
-| First generation                                                                                                               | Last generation                                                                                                                         |
-|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/krajoff/NSGA_ANSYS_PHD/blob/main/pictures/G1.Baksan.750p.png?raw=true" width="246" height="204"> | fro<img src="https://github.com/krajoff/NSGA_ANSYS_PHD/blob/main/pictures/G39.Baksan.750p.Paper.png?raw=true" width="246" height="204"> |
+Last generation <br>
+<img src="https://github.com/krajoff/NSGA_ANSYS_PHD/blob/main/pictures/G39.Baksan.750p.Paper.png?raw=true" width="246" height="204">
