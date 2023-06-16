@@ -519,6 +519,7 @@ oEditor.CreateRelativeCS Array("NAME:RelativeCSParameters", _
   "XAxisXvec:=", "1/tan(2*" & CStr(PiConst) & "/$Poles/2)*1mm", "XAxisYvec:=", "1mm", "XAxisZvec:=", "0mm", _
   "YAxisXvec:=", "0mm", "YAxisYvec:=", "1mm", "YAxisZvec:=", "0mm"), _
   Array("NAME:Attributes", "Name:=", "SplitPoleLeft")
+If CalArea <> Poles Then
 oEditor.Split Array("NAME:Selections", _
   "Selections:=", "Band", _
   "NewPartsModelFlag:=", "Model"), _
@@ -527,12 +528,14 @@ oEditor.Split Array("NAME:Selections", _
   "WhichSide:=", "PositiveOnly", _
   "SplitCrossingObjectsOnly:=", false, _
   "DeleteInvalidObjects:=", true)
+End If
 oEditor.SetWCS Array("NAME:SetWCS Parameter", "Working Coordinate System:=", "Global")
 oEditor.CreateRelativeCS Array("NAME:RelativeCSParameters", _
   "OriginX:=", "0mm", "OriginY:=", "0mm", "OriginZ:=", "0mm", _
   "XAxisXvec:=", "-1/tan(2*" & CStr(PiConst) & "/$Poles*($CalArea-.5))*1mm", "XAxisYvec:=", "1mm", "XAxisZvec:=", "0mm", _
   "YAxisXvec:=", "0mm", "YAxisYvec:=", "1mm", "YAxisZvec:=", "0mm"), _
   Array("NAME:Attributes", "Name:=", "SplitPoleRight")
+If CalArea <> Poles Then
 oEditor.Split Array("NAME:Selections", _
   "Selections:=", "Band", _
   "NewPartsModelFlag:=", "Model"), _
@@ -541,6 +544,7 @@ oEditor.Split Array("NAME:Selections", _
   "WhichSide:=", "PositiveOnly", _
   "SplitCrossingObjectsOnly:=", false, _
   "DeleteInvalidObjects:=", true)
+End If
 oEditor.SetWCS Array("NAME:SetWCS Parameter", "Working Coordinate System:=", "Global")
 oEditor.CreateCircle Array("NAME:CircleParameters", "IsCovered:=", true, _
   "XCenter:=", "0mm", "YCenter:=", "0mm", "ZCenter:=", "0mm", _
@@ -1173,6 +1177,7 @@ oModule.AssignEndConnection Array("NAME:DamperConnection", _
 "Objects:=", DmpArr, _
 "ResistanceValue:=", "1e-007ohm", _
 "InductanceValue:=", "1e-009H")
+If CalArea <> Poles Then
 ' ----------------------------------------------
 ' Split DiaYoke, DiaTooth, RimRotorOut, RimRotorIn, SmallAirSector, Mover
 ' ----------------------------------------------
@@ -1213,6 +1218,7 @@ Else
     "ReverseU:=", false, _
     "Master:=", "Master", _
     "SameAsMaster:=", false)
+End If
 End If
 oModule.AssignVectorPotential Array("NAME:VectorPotential", _
   "Edges:=", Array(7), _
