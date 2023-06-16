@@ -14,6 +14,6 @@
 | stator_coil     | investigation damper effect                                                                                                                   |
 
 
-| First generation                                                                                                               | The last generation                                                                                                                     |
+| First generation                                                                                                               | Last generation                                                                                                                         |
 |--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | <img src="https://github.com/krajoff/NSGA_ANSYS_PHD/blob/main/pictures/G1.Baksan.750p.png?raw=true" width="246" height="204"> | fro<img src="https://github.com/krajoff/NSGA_ANSYS_PHD/blob/main/pictures/G39.Baksan.750p.Paper.png?raw=true" width="246" height="204"> |
