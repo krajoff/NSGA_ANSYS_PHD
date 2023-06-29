@@ -35,7 +35,7 @@ R178 net_250 net_253 '$ActiveResistanceStator'
 VAmmeter251 0 net_235 DC 0 
 .PRINT TRAN PROBE VAmmeter251(t) I(VAmmeter251)
 W_265 net_255 net_256 VAmmeter251 M1 OFF
-I275 net_235 0 PULSE (0 2 0.02 0 0 0.1 '0.1 + 1') 
+I275 net_235 0 PULSE (0 2 1 0 0 0.1 '0.1 + 1') 
 .MODEL M1 CSW (Ron=1e-06 Roff=1000000000 Ion=1 Ioff=0)
 
 *end toplevel circuit
